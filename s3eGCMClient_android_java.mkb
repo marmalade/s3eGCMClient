@@ -1,0 +1,21 @@
+#!/usr/bin/env mkb
+# Builder mkb file for the java portion of the s3eGCMClient extension on android
+platform JAVA
+
+files
+{
+    (source/android)
+    s3eGCMClient.java
+	
+	(source/android/com/marmalade/studio/android/gcm)
+	s3eGCMClientReceiverBase.java
+	s3eGCMClientBroadcastReceiver.java
+	s3eGCMClientLocalReceiver.java
+}
+
+librarypath "$MARMALADE_ROOT/s3e/deploy/plugins/android/android.jar"
+librarypath "$MARMALADE_ROOT/s3e/loader/android/s3e_release.jar"
+librarypath "lib/android/libgoogleplayservice/android-support-v4.jar"
+librarypath "lib/android/libgoogleplayservice/google-play-services.jar"
+
+option output-name=lib/android/s3eGCMClient.jar

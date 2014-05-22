@@ -1,0 +1,98 @@
+#
+# Copyright (C) 2001-2011 Ideaworks3D Ltd.
+# All Rights Reserved.
+#
+# This document is protected by copyright, and contains information
+# proprietary to Ideaworks3D.
+# This file consists of source code released by Ideaworks3D under
+# the terms of the accompanying End User License Agreement (EULA).
+# Please do not use this program/source code before you have read the
+# EULA and have agreed to be bound by its terms.
+#
+callbacks
+
+include:
+#include <s3eTypes.h>
+
+/**
+ * @addtogroup s3egroup
+ * @{
+ */
+
+/**
+ * @defgroup gcmapigroup S3E GOOGLE CLOUD MESSAGING API Reference
+ *
+ * This provides user access to Google Cloud Messaging library
+ *
+ * @supported
+ * - android: On devices running android 2.2 or newer
+ */
+
+/**
+ * @}
+ * @addtogroup gcmapigroup
+ * @{
+ */
+  
+ /**
+ * GCMClient Callbacks.
+ *
+ * @see s3eGCMClientNotificationRegister
+ * @see s3eGCMClientNotificationUnregister
+ * @par Required Header Files
+ * s3eGCMClient.h
+ */
+typedef enum s3eGCMClientCallback
+{
+    /**
+     * Called when a notification has received.
+     */
+    S3E_GCMCLIENT_CALLBACK_NOTIFICATION_RECEIVED =  0,
+
+	/** 
+	 * Max callback.
+	 */
+    S3E_GCMCLIENT_CALLBACK_MAX
+} s3eGCMClientCallback;
+
+/**
+ * Returned by the S3E_DIALOG_FINISHED callback
+ *
+ * @par Required Header Files:
+ * s3eGCMClient.h
+ */
+struct s3eGCMClientCallbackData
+{
+
+};
+
+functions:
+
+/**
+ * Record app specific info for notifications to use.
+ *
+ * @par Required Header Files
+ * s3eGCMClient.h
+ * @param title, is an informal string that will be displayed in any notifications that arrive on the device identifying your app. Normally set this to your game name.
+ * @param title, is the resource id for the icon to display in notifications.
+ */
+void s3eGCMClientSetAppData(const char * title, int icon_id) NULL
+
+/**
+ * Register a Google Cloud Messaging session.
+ *
+ * @par Required Header Files
+ * s3eGCMClient.h
+ * @param sender_id, is the project number you acquired from the Android API console
+ */
+const char* s3eGCMClientGetRegisterId( const char* sender_id) NULL
+
+void s3eGCMClientUnregisterId() NULL
+
+void s3eGCMClientLocalNotificationSchedule(int delaySec, int id, const char* alertBody, const char* alertAction, const char* sound) NULL
+void s3eGCMClientLocalNotificationUnschedule(int id) NULL
+void s3eGCMClientLocalNotificationEnable(bool enable) NULL
+void s3eGCMClientLocalNotificationClearAll() NULL
+
+append:
+/** @} */
